@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 468a46d0ae32c3544b7d98094e6448a9, type: 3}
+  m_Name: AddressableAssetSettings
+  m_EditorClassIdentifier: 
+  m_DefaultGroup: 432f2329c556fd64687aae9e9461b55d
+  m_currentHash:
+    serializedVersion: 2
+    Hash: a9f6bcb0dc7298445c1eb91adceb9705
+  m_OptimizeCatalogSize: 0
+  m_BuildRemoteCatalog: 0
+  m_BundleLocalCatalog: 0
+  m_CatalogRequestsTimeout: 0
+  m_DisableCatalogUpdateOnStart: 0
+  m_IgnoreUnsupportedFilesInBuild: 0
+  m_UniqueBundleIds: 0
+  m_NonRecursiveBuilding: 1
+  m_CCDEnabled: 0
+  m_maxConcurrentWebRequests: 3
+  m_ContiguousBundles: 1
+  m_StripUnityVersionFromBundleBuild: 0
+  m_DisableVisibleSubAssetRepresentations: 0
+  m_ShaderBundleNaming: 0
+  m_ShaderBundleCustomNaming: 
+  m_MonoScriptBundleNaming: 0
+  m_CheckForContentUpdateRestrictionsOption: 0
+  m_MonoScriptBundleCustomNaming: 
+  m_RemoteCatalogBuildPath:
+    m_Id: 
+  m_RemoteCatalogLoadPath:
+    m_Id: 
+  m_ContentStateBuildPathProfileVariableName: 
+  m_CustomContentStateBuildPath: 
+  m_ContentStateBuildPath: 
+  m_BuildAddressablesWithPlayerBuild: 0
+  m_overridePlayerVersion: '[UnityEditor.PlayerSettings.bundleVersion]'
+  m_GroupAssets:
+  - {fileID: 11400000, guid: 4510533346fe14543816d2f6bf7af65f, type: 2}
+  - {fileID: 11400000, guid: cdc5ccfd5ed9b8b4ba65a53b09dfcb6e, type: 2}
+  - {fileID: 11400000, guid: 86188c37429b68147b0123c8b5e44b3e, type: 2}
+  - {fileID: 11400000, guid: c0cf79ea474195649a408c41c86bc0d3, type: 2}
+  - {fileID: 11400000, guid: e42a65739ce486c449c0e40c1d85ae03, type: 2}
+  - {fileID: 11400000, guid: 06000df7566162b4c9e3e156c447f283, type: 2}
+  m_BuildSettings:
+    m_CompileScriptsInVirtualMode: 0
+    m_CleanupStreamingAssetsAfterBuilds: 1
+    m_LogResourceManagerExceptions: 1
+    m_BundleBuildPath: Temp/com.unity.addressables/AssetBundles
+  m_ProfileSettings:
+    m_Profiles:
+    - m_InheritedParent: 
+      m_Id: c5fe5183e169eba42bb7e732f52288b1
+      m_ProfileName: Default
+      m_Values:
+      - m_Id: 3c42db6807c54e645b67a576b5a59971
+        m_Value: '[UnityEditor.EditorUserBuildSettings.activeBuildTarget]'
+      - m_Id: bbb00c9af98a4cb43b2e4fe92169f53a
+        m_Value: '[UnityEngine.AddressableAssets.Addressables.BuildPath]/[BuildTarget]'
+      - m_Id: c1af655cd6c9b5a4b9612c18ab92dedf
+        m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
+      - m_Id: c6ffc579110f50d47be4c3a797893516
+        m_Value: ServerData/[BuildTarget]
+      - m_Id: 475739397eaca4f41a5ca7cecfbf46be
+        m_Value: http://[PrivateIpAddress]:[HostingServicePort]
+    m_ProfileEntryNames:
+    - m_Id: 3c42db6807c54e645b67a576b5a59971
+      m_Name: BuildTarget
+      m_InlineUsage: 0
+    - m_Id: bbb00c9af98a4cb43b2e4fe92169f53a
+      m_Name: Local.BuildPath
+      m_InlineUsage: 0
+    - m_Id: c1af655cd6c9b5a4b9612c18ab92dedf
+      m_Name: Local.LoadPath
+      m_InlineUsage: 0
+    - m_Id: c6ffc579110f50d47be4c3a797893516
+      m_Name: Remote.BuildPath
+      m_InlineUsage: 0
+    - m_Id: 475739397eaca4f41a5ca7cecfbf46be
+      m_Name: Remote.LoadPath
+      m_InlineUsage: 0
+    m_ProfileVersion: 1
+  m_LabelTable:
+    m_LabelNames:
+    - default
+  m_SchemaTemplates: []
+  m_GroupTemplateObjects:
+  - {fileID: 11400000, guid: 70af32ce3649a3c4d99ba7a7449f5672, type: 2}
+  m_InitializationObjects: []
+  m_CertificateHandlerType:
+    m_AssemblyName: 
+    m_ClassName: 
+  m_ActivePlayerDataBuilderIndex: 3
+  m_DataBuilders:
+  - {fileID: 11400000, guid: e74184b64431b6a42a1bb7645764c20d, type: 2}
+  - {fileID: 11400000, guid: 7ae48f8e9c5d3964bbb27528c5775c37, type: 2}
+  - {fileID: 11400000, guid: 32b96c1763d0ae547acb8b885f10324f, type: 2}
+  - {fileID: 11400000, guid: 99fbcca991d2b374d9a6d9e1d388b419, type: 2}
+  m_ActiveProfileId: c5fe5183e169eba42bb7e732f52288b1
+  m_HostingServicesManager:
+    m_HostingServiceInfos: []
+    m_Settings: {fileID: 11400000}
+    m_NextInstanceId: 0
+    m_RegisteredServiceTypeRefs: []
+    m_PingTimeoutInMilliseconds: 5000
