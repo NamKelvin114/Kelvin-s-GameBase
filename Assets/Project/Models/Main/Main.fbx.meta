@@ -1,0 +1,379 @@
+fileFormatVersion: 2
+guid: 98301ae439f0173438f6a8632ddce01b
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Assessories_Wing_15_17_18_mat
+    second: {fileID: 2100000, guid: b7ca76ea4f7d3ff488748b1ff8e25d6b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Assessories_Wing_16_mat
+    second: {fileID: 2100000, guid: 978b09a20d7c49840802b05a0a35e15c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Assessories_Wing_mat
+    second: {fileID: 2100000, guid: fc788db905d02ff429333f8e5c1981a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Assessories_mat
+    second: {fileID: 2100000, guid: f07c6f2c79ad2dc47be49c99729a8e91, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Base_body5
+    second: {fileID: 2100000, guid: b62799d981193f64b9241237d1ab66b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Base_body_Mat
+    second: {fileID: 2100000, guid: 71bd72968ccb3ed42b8c14ac2831d053, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Base_body_NPC_Mat
+    second: {fileID: 2100000, guid: 20f10f6ca76807946b29a3d8d07c3cd2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bikini_01_mat
+    second: {fileID: 2100000, guid: 1f9776cc54de7924483f2fd2a482acd6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eyes_Mat
+    second: {fileID: 2100000, guid: b62799d981193f64b9241237d1ab66b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hair_01_mat
+    second: {fileID: 2100000, guid: a56272e541a1a3343a5935c24a6793b7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hair_02_mat
+    second: {fileID: 2100000, guid: 92e93d04e010e304e9d45891b932fdf9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hair_03_mat
+    second: {fileID: 2100000, guid: ce09dc031647ab94aa9f0c42eab0e24a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hair_12_mat
+    second: {fileID: 2100000, guid: 36e20df107bfaf14eb3f8d06d9c2283a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hair_13_mat
+    second: {fileID: 2100000, guid: e0f9b0c87c9eaaf48b4f1130ed057a47, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hair_14_mat
+    second: {fileID: 2100000, guid: 15658cdcf98b2644391f39a81c748993, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hair_16_mat
+    second: {fileID: 2100000, guid: 1ad742450d3803b42bc2395166bbd2b4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hair_17_mat
+    second: {fileID: 2100000, guid: b7e3ab49f7539ab488c652e56c90492f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hair_Skin_04_mat
+    second: {fileID: 2100000, guid: f1096ead7400ae54098118b1bf7fb39c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hair_Skin_05_mat
+    second: {fileID: 2100000, guid: 9e98eb1d64cb4f048a9f33f4c623632a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hair_Skin_06_mat
+    second: {fileID: 2100000, guid: 391dc184bd80a7f41a26e71be4c79d7b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hair_Skin_07_mat
+    second: {fileID: 2100000, guid: ec3ab7b3e6f6fc94ba20ea2b65166d76, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hair_Skin_08_mat
+    second: {fileID: 2100000, guid: f8c467fc560a8c84e80ea15d59c744ae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hair_Skin_09_mat
+    second: {fileID: 2100000, guid: 3be8231656d37264ab8227a2c72ec584, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hair_Skin_10_mat
+    second: {fileID: 2100000, guid: 96f1aca1847c57144969d8aed3e1ad77, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hair_Skin_11_mat
+    second: {fileID: 2100000, guid: 0c96d443c5a0bd648917b9d375282a99, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hair_Skin_15_mat
+    second: {fileID: 2100000, guid: 8e2288647358eb54fb21a1ed2157a822, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hair_Skin_18
+    second: {fileID: 2100000, guid: a103215bc9d82854a8c6bfbc833e08b4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hair_Skin_19
+    second: {fileID: 2100000, guid: 33d0eff0b084f894f95b17e9580db1b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hair_Ugly_mat
+    second: {fileID: 2100000, guid: c13d8973fb5ba40478c83c97d1a12200, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Hair_Vertical_mat
+    second: {fileID: 2100000, guid: 36143d26150a9464a929b59adb7b4032, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Level_Bar_mat
+    second: {fileID: 2100000, guid: a094b086eb9b608409774289e69a6267, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Level_Bikini01_mat
+    second: {fileID: 2100000, guid: 1f9776cc54de7924483f2fd2a482acd6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Level_Maid_mat
+    second: {fileID: 2100000, guid: ff18aa5c8ea14bc439879f806e85e0d1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Level_Snake_mat
+    second: {fileID: 2100000, guid: 085cd09d54d9cbd48976152655b7ef94, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Level_Ugly_mat
+    second: {fileID: 2100000, guid: c6197a8ca57af0246966aa33e11d9ddd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin_01_mat
+    second: {fileID: 2100000, guid: a4a54f0fb8be3b747a894a6262306679, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin_02_mat
+    second: {fileID: 2100000, guid: 42d53373babb3ff4bb96c73432abb258, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin_03_mat
+    second: {fileID: 2100000, guid: b118bd598f51ec94aa2480dddf998e93, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin_04_mat
+    second: {fileID: 2100000, guid: 36a3b8cd0a299fe42aca2ee24ea50f97, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin_05_mat
+    second: {fileID: 2100000, guid: c4b6a35e7aa1c62408f434e41dbcea52, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin_06_mat
+    second: {fileID: 2100000, guid: fa19ac7444089094d8d1604a5b6a0621, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin_07_mat
+    second: {fileID: 2100000, guid: bcc0341afb80199429a4067c9f438643, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin_08_mat
+    second: {fileID: 2100000, guid: b0cef10bbff48d2429ddb060122fd078, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin_09_mat
+    second: {fileID: 2100000, guid: 4c7a4c5e67f07df49949bc5144a434c3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin_10_mat
+    second: {fileID: 2100000, guid: 19d95276f31f87b4fab0da70e5407b9c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin_11_mat
+    second: {fileID: 2100000, guid: dc7ff495d65ea7f44844d513898098e0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin_12_mat
+    second: {fileID: 2100000, guid: 5fe6f1368879810469fc70754777c332, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin_13_mat
+    second: {fileID: 2100000, guid: 9d7c514503da88340839e1ca491f2f89, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin_14_mat
+    second: {fileID: 2100000, guid: dc9829a2f7992da4ca51480c3816bdcf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin_15_mat
+    second: {fileID: 2100000, guid: 97e8a8ce8ed79e44ea369a98a3651c18, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin_16_mat
+    second: {fileID: 2100000, guid: 969a5eb27f0f4924689fa4136d61746a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin_17_mat
+    second: {fileID: 2100000, guid: 79119dbbafaa71d4289d62c11859a624, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin_18_mat
+    second: {fileID: 2100000, guid: b785b320cc02f074eae3bc98979daa51, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin_19_mat
+    second: {fileID: 2100000, guid: ec50dec18abb84242a2019303a979b5f, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
