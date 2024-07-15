@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections;
-using UnityEngine;
 using System.Runtime.CompilerServices;
-using MasterData;
+using Kelvin.MasterData;
 using UnityEditor;
+using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Kelvin
 {
@@ -17,7 +18,7 @@ namespace Kelvin
         {
             var app = new GameObject("App") { hideFlags = HideFlags.HideInHierarchy };
             Init(app.AddComponent<GlobalComponent>());
-            UnityEngine.Object.DontDestroyOnLoad(app);
+            Object.DontDestroyOnLoad(app);
         }
 
         private static void Init(GlobalComponent globalComponent)
@@ -39,10 +40,10 @@ namespace Kelvin
         }
 
         /// <summary>
-        /// Gets the installation timestamp of this app in local timezone.
-        /// This timestamp is recorded when the app is initialized for
-        /// the first time so it's not really precise but can serve well as a rough approximation
-        /// provided that the initialization is done soon after app launch.
+        ///     Gets the installation timestamp of this app in local timezone.
+        ///     This timestamp is recorded when the app is initialized for
+        ///     the first time so it's not really precise but can serve well as a rough approximation
+        ///     provided that the initialization is done soon after app launch.
         /// </summary>
         /// <returns>The installation timestamp.</returns>
         public static DateTime GetAppFirstOpenTimestamp => Data.Load(Invariant.FIRST_OPEN_TIMESTAMP_KEY, UnixEpoch);
@@ -53,8 +54,10 @@ namespace Kelvin
                 Data.Save(Invariant.FIRST_OPEN_TIMESTAMP_KEY, DateTime.Now);
         }
 
-        public static float DeltaTime(TimeMode mode) =>
-            mode == TimeMode.Normal ? Time.deltaTime : Time.unscaledDeltaTime;
+        public static float DeltaTime(TimeMode mode)
+        {
+            return mode == TimeMode.Normal ? Time.deltaTime : Time.unscaledDeltaTime;
+        }
 
         public static void AddListener(UpdateMode mode, Action action)
         {
@@ -126,37 +129,61 @@ namespace Kelvin
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static AsyncProcessHandle StartCoroutine(IEnumerator routine) =>
-            globalComponent.StartCoroutineInternal(routine);
+        public static AsyncProcessHandle StartCoroutine(IEnumerator routine)
+        {
+            return globalComponent.StartCoroutineInternal(routine);
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void StopCoroutine(AsyncProcessHandle handle) => globalComponent.StopCoroutineInternal(handle);
+        public static void StopCoroutine(AsyncProcessHandle handle)
+        {
+            globalComponent.StopCoroutineInternal(handle);
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void DisableThrowException() => globalComponent.ThrowException = false;
+        public static void DisableThrowException()
+        {
+            globalComponent.ThrowException = false;
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void EnableThrowException() => globalComponent.ThrowException = true;
+        public static void EnableThrowException()
+        {
+            globalComponent.ThrowException = true;
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Action ToMainThread(Action action) => globalComponent.ToMainThreadImpl(action);
+        public static Action ToMainThread(Action action)
+        {
+            return globalComponent.ToMainThreadImpl(action);
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Action<T> ToMainThread<T>(Action<T> action) => globalComponent.ToMainThreadImpl(action);
+        public static Action<T> ToMainThread<T>(Action<T> action)
+        {
+            return globalComponent.ToMainThreadImpl(action);
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Action<T1, T2> ToMainThread<T1, T2>(Action<T1, T2> action) =>
-            globalComponent.ToMainThreadImpl(action);
+        public static Action<T1, T2> ToMainThread<T1, T2>(Action<T1, T2> action)
+        {
+            return globalComponent.ToMainThreadImpl(action);
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Action<T1, T2, T3> ToMainThread<T1, T2, T3>(Action<T1, T2, T3> action) =>
-            globalComponent.ToMainThreadImpl(action);
+        public static Action<T1, T2, T3> ToMainThread<T1, T2, T3>(Action<T1, T2, T3> action)
+        {
+            return globalComponent.ToMainThreadImpl(action);
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void RunOnMainThread(Action action) => globalComponent.RunOnMainThreadImpl(action);
+        public static void RunOnMainThread(Action action)
+        {
+            globalComponent.RunOnMainThreadImpl(action);
+        }
 
         /// <summary>
-        /// Enables or disables Unity debug log.
+        ///     Enables or disables Unity debug log.
         /// </summary>
         /// <param name="isEnabled">If set to <c>true</c> is enabled.</param>
         public static void EnableUnityDebugLog(bool isEnabled)
@@ -169,15 +196,19 @@ namespace Kelvin
         }
 
         /// <summary>
-        /// Delay call
+        ///     Delay call
         /// </summary>
         /// <param name="duration">The duration to wait before the DelayHandle fires.</param>
         /// <param name="onComplete">The action to run when the DelayHandle elapses.</param>
-        /// <param name="onUpdate">A function to call each tick of the DelayHandle. Takes the number of seconds elapsed since
-        /// the start of the current cycle.</param>
+        /// <param name="onUpdate">
+        ///     A function to call each tick of the DelayHandle. Takes the number of seconds elapsed since
+        ///     the start of the current cycle.
+        /// </param>
         /// <param name="isLooped">Whether the DelayHandle should restart after executing.</param>
-        /// <param name="useRealTime">Whether the DelayHandle uses real-time(not affected by slow-mo or pausing) or
-        /// game-time(affected by time scale changes).</param>
+        /// <param name="useRealTime">
+        ///     Whether the DelayHandle uses real-time(not affected by slow-mo or pausing) or
+        ///     game-time(affected by time scale changes).
+        /// </param>
         /// <returns></returns>
         public static DelayHandle Delay(float duration, Action onComplete, Action<float> onUpdate = null,
             bool isLooped = false, bool useRealTime = false)
@@ -194,15 +225,19 @@ namespace Kelvin
 
 
         /// <summary>
-        /// Safe Delay call when it had target, progress delay will be cancel when target was destroyed
+        ///     Safe Delay call when it had target, progress delay will be cancel when target was destroyed
         /// </summary>
         /// <param name="duration">The duration to wait before the DelayHandle fires.</param>
         /// <param name="onComplete">The action to run when the DelayHandle elapses.</param>
-        /// <param name="onUpdate">A function to call each tick of the DelayHandle. Takes the number of seconds elapsed since
-        /// the start of the current cycle.</param>
+        /// <param name="onUpdate">
+        ///     A function to call each tick of the DelayHandle. Takes the number of seconds elapsed since
+        ///     the start of the current cycle.
+        /// </param>
         /// <param name="isLooped">Whether the DelayHandle should restart after executing.</param>
-        /// <param name="useRealTime">Whether the DelayHandle uses real-time(not affected by slow-mo or pausing) or
-        /// game-time(affected by time scale changes).</param>
+        /// <param name="useRealTime">
+        ///     Whether the DelayHandle uses real-time(not affected by slow-mo or pausing) or
+        ///     game-time(affected by time scale changes).
+        /// </param>
         /// <param name="target">The target (behaviour) to attach this DelayHandle to.</param>
         public static DelayHandle Delay(
             MonoBehaviour target,

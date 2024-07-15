@@ -2,20 +2,18 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.CompilerServices;
-using Kelvin;
 using UnityEngine;
 
-namespace MasterData
+namespace Kelvin.MasterData
 {
     /// <summary>
-    /// Master class holder data in memory
+    ///     Master class holder data in memory
     /// </summary>
     public static class Data
     {
-        private static bool isInitialized;
+        private const int INIT_SIZE = 64;
         private static int profile;
         private static Dictionary<string, byte[]> datas = new();
-        private const int INIT_SIZE = 64;
 
         public static event Action OnSaveEvent;
 
@@ -24,8 +22,8 @@ namespace MasterData
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static void Init()
         {
-            if (isInitialized) return;
-            isInitialized = true;
+            if (IsInitialized) return;
+            IsInitialized = true;
             LoadAll();
             App.AddFocusCallback(OnApplicationFocus);
         }
@@ -61,7 +59,7 @@ namespace MasterData
 
         #region Public API
 
-        public static bool IsInitialized => isInitialized;
+        public static bool IsInitialized { get; private set; }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void ChangeProfile(int profile)
@@ -84,7 +82,7 @@ namespace MasterData
         {
             Debug.Log("saveAll");
             OnSaveEvent?.Invoke();
-            byte[] bytes = Serialize(datas);
+            var bytes = Serialize(datas);
             File.WriteAllBytes(GetPath, bytes);
         }
 
@@ -94,7 +92,7 @@ namespace MasterData
         {
             OnSaveEvent?.Invoke();
 
-            byte[] bytes = Serialize(datas);
+            var bytes = Serialize(datas);
             await File.WriteAllBytesAsync(GetPath, bytes);
         }
 
@@ -107,7 +105,7 @@ namespace MasterData
                 stream.Close();
             }
 
-            byte[] bytes = File.ReadAllBytes(GetPath);
+            var bytes = File.ReadAllBytes(GetPath);
             if (bytes.Length == 0)
             {
                 datas.Clear();
@@ -127,7 +125,7 @@ namespace MasterData
                 stream.Close();
             }
 
-            byte[] bytes = await File.ReadAllBytesAsync(GetPath);
+            var bytes = await File.ReadAllBytesAsync(GetPath);
             if (bytes.Length == 0)
             {
                 datas.Clear();
@@ -138,10 +136,12 @@ namespace MasterData
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="key"></param>
-        /// <param name="default">If value of <paramref name="key"/> can not be found or empty! will return the default value of data type!</param>
+        /// <param name="default">
+        ///     If value of <paramref name="key" /> can not be found or empty! will return the default value of
+        ///     data type!
+        /// </param>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -149,7 +149,7 @@ namespace MasterData
         {
             RequireNullCheck();
 
-            datas.TryGetValue(key, out byte[] value);
+            datas.TryGetValue(key, out var value);
             if (value == null || value.Length == 0) return @default;
 
             return Deserialize<T>(value);
@@ -161,7 +161,7 @@ namespace MasterData
             RequireNullCheck();
 
             bool hasKey;
-            if (datas.TryGetValue(key, out byte[] value))
+            if (datas.TryGetValue(key, out var value))
             {
                 data = Deserialize<T>(value);
                 hasKey = true;
@@ -179,22 +179,31 @@ namespace MasterData
         public static void Save<T>(string key, T data)
         {
             RequireNullCheck();
-            byte[] bytes = Serialize(data);
+            var bytes = Serialize(data);
             if (datas.TryAdd(key, bytes)) return;
             datas[key] = bytes;
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool HasKey(string key) => datas.ContainsKey(key);
+        public static bool HasKey(string key)
+        {
+            return datas.ContainsKey(key);
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void DeleteKey(string key) => datas.Remove(key);
+        public static void DeleteKey(string key)
+        {
+            datas.Remove(key);
+        }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void DeleteAll() => datas.Clear();
+        public static void DeleteAll()
+        {
+            datas.Clear();
+        }
 
         /// <summary>
-        /// Get raw byte[] of all data of profile
+        ///     Get raw byte[] of all data of profile
         /// </summary>
         /// <returns></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -204,7 +213,7 @@ namespace MasterData
         }
 
         /// <summary>
-        /// Load from byte[]
+        ///     Load from byte[]
         /// </summary>
         /// <param name="bytes"></param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

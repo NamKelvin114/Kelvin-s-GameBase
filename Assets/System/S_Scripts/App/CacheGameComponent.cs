@@ -4,8 +4,8 @@ namespace Kelvin
 {
     public abstract class CacheGameComponent<T> : MonoBehaviour
     {
-        public UnityEngine.Transform CachedTransform { get; private set; }
         public T component;
+        public Transform CachedTransform { get; private set; }
 
         protected virtual void Awake()
         {

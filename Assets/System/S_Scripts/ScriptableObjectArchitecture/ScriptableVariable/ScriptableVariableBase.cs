@@ -1,10 +1,7 @@
 using System;
-using MasterData;
+using Kelvin.MasterData;
 using NaughtyAttributes;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace ScriptableObjectArchitecture
 {
@@ -17,10 +14,10 @@ namespace ScriptableObjectArchitecture
 
         [SerializeField] protected bool save;
 
-        private bool _isShowDebugValue;
-
         [ShowIf(nameof(_isShowDebugValue))] [ReadOnly] [SerializeField]
         private T DebugValue;
+
+        private bool _isShowDebugValue;
 
         [NonSerialized] protected T runtimeValue;
 
@@ -28,24 +25,23 @@ namespace ScriptableObjectArchitecture
         {
             get
             {
-                if (save)
-                {
-                    return Data.Load(iD, initValue);
-                }
+                if (save) return Data.Load(iD, initValue);
 
                 return runtimeValue;
             }
             set
             {
                 if (save)
-                {
                     Data.Save(iD, value);
-                }
                 else
-                {
                     runtimeValue = value;
-                }
             }
+        }
+
+
+        private void Reset()
+        {
+            iD = Guid.NewGuid().ToString();
         }
 
         protected override void DoBeforeSerialize()
@@ -55,12 +51,6 @@ namespace ScriptableObjectArchitecture
         protected override void DoAfterDeserialize()
         {
             runtimeValue = initValue;
-        }
-
-
-        private void Reset()
-        {
-            iD = Guid.NewGuid().ToString();
         }
     }
 }

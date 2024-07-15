@@ -1,4 +1,3 @@
-using System;
 using NaughtyAttributes;
 using PrimeTween;
 using UnityEngine;
@@ -8,33 +7,29 @@ public class LoadingController : MonoBehaviour
 {
     [SerializeField] private Slider circleSlider;
     [SerializeField] private Slider horizonSlider;
-    [SerializeField, Range(0.5f, 2f)] private float timeLoading;
-
-    void UseTypeLoading(bool isHori)
-    {
-        circleSlider.gameObject.SetActive(!isHori);
-        horizonSlider.gameObject.SetActive(isHori);
-    }
+    [SerializeField] [Range(0.5f, 2f)] private float timeLoading;
 
     private void Awake()
     {
         if (circleSlider.gameObject.activeSelf)
-        {
             Tween.UISliderValue(circleSlider, 1f, timeLoading, Ease.OutCirc);
-        }
         else
-        {
             Tween.UISliderValue(horizonSlider, 1f, timeLoading, Ease.OutCirc);
-        }
+    }
+
+    private void UseTypeLoading(bool isHori)
+    {
+        circleSlider.gameObject.SetActive(!isHori);
+        horizonSlider.gameObject.SetActive(isHori);
     }
 #if UNITY_EDITOR
-    [Button()]
+    [Button]
     public void UseCircleLoading()
     {
         UseTypeLoading(false);
     }
 
-    [Button()]
+    [Button]
     public void UseHorizonLoading()
     {
         UseTypeLoading(true);

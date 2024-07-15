@@ -11,7 +11,7 @@ public abstract class Popup : CacheGameComponent<Canvas>, IPopupRuntime
     [ShowIf(nameof(isUseAnimation))] [SerializeField]
     private TypeAnimation typeAnimation;
 
-    [ShowIf(nameof(typeAnimation), TypeAnimation.Move)] [SerializeField]
+    [ShowIf(nameof(OptionMove))] [SerializeField]
     private TypeAnimMove typeAnimMove;
 
     private readonly int _offset = 200;
@@ -19,10 +19,25 @@ public abstract class Popup : CacheGameComponent<Canvas>, IPopupRuntime
     private Action _actionBeforeHide;
 
     private Action _actionBeforeShow;
-    public Canvas CanvasPopup => component;
-    public RectTransform GetRectTransform => component.GetComponent<RectTransform>();
+
     private Vector3 PopupPos => GetRectTransform.localPosition;
     public bool IsShowing { get; set; }
+
+    protected override void Reset()
+    {
+        if (component == null)
+        {
+            gameObject.AddComponent<Canvas>();
+            component = gameObject.GetComponent<Canvas>();
+        }
+
+        base.Reset();
+        component.overrideSorting = true;
+        ResetPopupName();
+    }
+
+    public Canvas CanvasPopup => component;
+    public RectTransform GetRectTransform => component.GetComponent<RectTransform>();
 
     public void Show(Action beforeShow = null)
     {
@@ -64,17 +79,6 @@ public abstract class Popup : CacheGameComponent<Canvas>, IPopupRuntime
         }
     }
 
-    public virtual void BeforeShow()
-    {
-        _actionBeforeShow?.Invoke();
-        _actionBeforeShow = null;
-    }
-
-    public virtual void BeforeHide()
-    {
-        _actionBeforeHide?.Invoke();
-        _actionBeforeHide = null;
-    }
 
     public void Hide(Action beforeHide = null)
     {
@@ -142,6 +146,23 @@ public abstract class Popup : CacheGameComponent<Canvas>, IPopupRuntime
         }
     }
 
+    private bool OptionMove()
+    {
+        return isUseAnimation && typeAnimation == TypeAnimation.Move;
+    }
+
+    protected virtual void BeforeShow()
+    {
+        _actionBeforeShow?.Invoke();
+        _actionBeforeShow = null;
+    }
+
+    protected virtual void BeforeHide()
+    {
+        _actionBeforeHide?.Invoke();
+        _actionBeforeHide = null;
+    }
+
     private void Active(bool isActive)
     {
         gameObject.SetActive(isActive);
@@ -198,6 +219,14 @@ public abstract class Popup : CacheGameComponent<Canvas>, IPopupRuntime
         Tween.LocalPosition(GetRectTransform, destination, duration)
             .OnComplete(() => { IsShowing = false; });
         ;
+    }
+
+    [ContextMenu("Reset PopupName")]
+    private void ResetPopupName()
+    {
+        gameObject.name = GetType().Name;
+        Debug.Log(gameObject.name);
+        Debug.Log(name);
     }
 }
 
