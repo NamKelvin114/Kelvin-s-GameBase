@@ -173,7 +173,7 @@ public abstract class Popup : CacheGameComponent<Canvas>, IPopupRuntime
     {
     }
 
-    private void Close()
+    protected void Close()
     {
         BeforeHide();
         gameObject.SetActive(false);
@@ -225,8 +225,6 @@ public abstract class Popup : CacheGameComponent<Canvas>, IPopupRuntime
     private void ResetPopupName()
     {
         gameObject.name = GetType().Name;
-        Debug.Log(gameObject.name);
-        Debug.Log(name);
     }
 }
 

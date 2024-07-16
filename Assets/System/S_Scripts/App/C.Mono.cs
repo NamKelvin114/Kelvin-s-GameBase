@@ -4,6 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
+using Random = UnityEngine.Random;
 
 namespace Kelvin
 {
@@ -236,6 +237,13 @@ namespace Kelvin
             }
 
             return result;
+        }
+
+        public static T PickRandom<T>(this List<T> collection)
+        {
+            if (collection == null) throw new ArgumentNullException(nameof(collection));
+
+            return collection.Count == 0 ? default : collection[Random.Range(0, collection.Count)];
         }
 
         public static T GetOrAddComponent<T>(this Component source) where T : Component

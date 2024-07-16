@@ -12,11 +12,13 @@ public class PopupController : Singleton<PopupController>
 
     [ReadOnly] [SerializeField] private List<Popup> popupsInstance;
 
-    public UniTask ShowPopup(Popup popup, Action actionBeforeShow = null)
+    public UniTask ShowPopup(string popupName, Action actionBeforeShow = null)
     {
-        if (!popupsInstance.Contains(popup))
+        bool isPopupExisted = popupsInstance.Find(p => p.name == popupName);
+        if (!isPopupExisted)
         {
-            var loadPopup = Addressables.LoadAssetAsync<GameObject>(popup.ToString());
+            Debug.LogWarning(popupName);
+            var loadPopup = Addressables.LoadAssetAsync<GameObject>(popupName);
             UniTask.WaitUntil(() => loadPopup.IsDone);
             var getPopupObject = loadPopup.Result;
             var getPopup = getPopupObject.GetComponent<Popup>();
@@ -27,22 +29,23 @@ public class PopupController : Singleton<PopupController>
         }
         else
         {
-            var getPopup = popupsInstance.Where(p => p = popup).FirstOrDefault();
+            var getPopup = popupsInstance.Where(p => p.name == popupName).FirstOrDefault();
             getPopup.Show();
         }
 
         return UniTask.CompletedTask;
     }
 
-    public UniTask HidePopup(Popup popup, Action actionBeforeHide = null)
+    public UniTask HidePopup(string popupName, Action actionBeforeHide = null)
     {
-        if (!popupsInstance.Contains(popup))
+        bool isPopupExisted = popupsInstance.Find(p => p.name == popupName);
+        if (!isPopupExisted)
         {
             Debug.LogError("Popup was not found");
         }
         else
         {
-            var getPopup = popupsInstance.Where(p => p = popup).FirstOrDefault();
+            var getPopup = popupsInstance.Where(p => p.name == popupName).FirstOrDefault();
             getPopup.Hide();
         }
 
@@ -52,10 +55,7 @@ public class PopupController : Singleton<PopupController>
     public Popup Find(Popup popup)
     {
         var getPopup = popupsInstance.Where(p => p = popup).FirstOrDefault();
-        if (getPopup != null)
-        {
-            return getPopup;
-        }
+        if (getPopup != null) return getPopup;
 
         Debug.LogError("Popup was not found");
         return null;

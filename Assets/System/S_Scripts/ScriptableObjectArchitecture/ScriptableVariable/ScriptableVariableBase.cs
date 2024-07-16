@@ -1,12 +1,15 @@
 using System;
+using Kelvin;
 using Kelvin.MasterData;
 using NaughtyAttributes;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace ScriptableObjectArchitecture
 {
     [Serializable]
-    public class ScriptableVariableBase<T> : ScriptableBase
+    public class ScriptableVariableBase<T> : ScriptableBaseEvent<T>
     {
         [ReadOnly] [SerializeField] protected string iD;
 
@@ -15,7 +18,9 @@ namespace ScriptableObjectArchitecture
         [SerializeField] protected bool save;
 
         [ShowIf(nameof(_isShowDebugValue))] [ReadOnly] [SerializeField]
-        private T DebugValue;
+        private T debugValue;
+
+        [SerializeField] private ResetType resetOn = ResetType.SceneLoaded;
 
         private bool _isShowDebugValue;
 
@@ -26,7 +31,6 @@ namespace ScriptableObjectArchitecture
             get
             {
                 if (save) return Data.Load(iD, initValue);
-
                 return runtimeValue;
             }
             set
@@ -35,6 +39,8 @@ namespace ScriptableObjectArchitecture
                     Data.Save(iD, value);
                 else
                     runtimeValue = value;
+                debugValue = value;
+                if (_onRaise != null) _onRaise.Invoke(value);
             }
         }
 
@@ -44,6 +50,29 @@ namespace ScriptableObjectArchitecture
             iD = Guid.NewGuid().ToString();
         }
 
+        private void OnEnable()
+        {
+#if UNITY_EDITOR
+            EditorApplication.playModeStateChanged += OnPlayModeChange;
+#endif
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        private void OnDisable()
+        {
+#if UNITY_EDITOR
+            EditorApplication.playModeStateChanged -= OnPlayModeChange;
+#endif
+        }
+
+        protected virtual void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            if ((resetOn == ResetType.SceneLoaded && mode == LoadSceneMode.Single) ||
+                (resetOn == ResetType.AdditiveSceneLoaded && mode == LoadSceneMode.Additive))
+                if (!save)
+                    Value = initValue;
+        }
+
         protected override void DoBeforeSerialize()
         {
         }
@@ -51,6 +80,19 @@ namespace ScriptableObjectArchitecture
         protected override void DoAfterDeserialize()
         {
             runtimeValue = initValue;
+        }
+
+        private void OnPlayModeChange(PlayModeStateChange playModeStateChange)
+        {
+            if (playModeStateChange == PlayModeStateChange.ExitingEditMode)
+            {
+                if (!save) debugValue = initValue;
+                _isShowDebugValue = true;
+            }
+            else if (playModeStateChange == PlayModeStateChange.EnteredEditMode)
+            {
+                _isShowDebugValue = false;
+            }
         }
     }
 }

@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -370,6 +369,8 @@ MonoBehaviour:
   circleSlider: {fileID: 1772293069}
   horizonSlider: {fileID: 2062105743}
   timeLoading: 1.341
+  isLoadingCompleted: {fileID: 11400000, guid: 66a6fa0605df82d478f64736d6bc23bd, type: 2}
+  loadSceneEvent: {fileID: 11400000, guid: cc05d80fdc51ef243a1cc9751c95b5c4, type: 2}
 --- !u!4 &527926591
 Transform:
   m_ObjectHideFlags: 0

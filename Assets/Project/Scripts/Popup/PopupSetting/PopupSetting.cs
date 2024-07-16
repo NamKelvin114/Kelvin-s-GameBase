@@ -5,19 +5,13 @@ public class PopupSetting : Popup
 {
     [SerializeField] private ButtonUI buttonUI;
 
-    private void Start()
+    private void OnEnable()
     {
-        buttonUI.OnButtonDown.AddListener(ButtonDown);
-        buttonUI.OnButtonHold.AddListener(HoldButton);
+        buttonUI.onClick.AddListener(Close);
     }
 
-    private void ButtonDown()
+    private void OnDisable()
     {
-        Debug.Log("DownButton");
-    }
-
-    private void HoldButton()
-    {
-        Debug.Log("HoldButton");
+        buttonUI.onClick.RemoveListener(Close);
     }
 }

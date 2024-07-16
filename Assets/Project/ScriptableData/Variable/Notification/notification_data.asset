@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ff1a32ecbb8d5740baaaa848841632a, type: 3}
+  m_Name: notification_data
+  m_EditorClassIdentifier: 
+  identifier: 4ea038f9-7158-4353-9444-adab00223f84
+  minute: 0
+  repeat: 0
+  bigPicture: 0
+  namePicture: 
+  overrideIcon: 0
+  smallIcon: icon_0
+  largeIcon: icon_1
+  datas:
+  - enableLocalization: 0
+    title: hello
+    message: hello
+    titleLocale: 
+    messageLocale: 
