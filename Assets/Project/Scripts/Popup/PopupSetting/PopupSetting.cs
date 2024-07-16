@@ -7,11 +7,11 @@ public class PopupSetting : Popup
 
     private void OnEnable()
     {
-        buttonUI.onClick.AddListener(Close);
+        buttonUI.onClick.AddListener(Hide);
     }
 
     private void OnDisable()
     {
-        buttonUI.onClick.RemoveListener(Close);
+        buttonUI.onClick.RemoveListener(Hide);
     }
 }

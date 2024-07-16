@@ -17,6 +17,6 @@ public class MenuController : MonoBehaviour
 
     private void OpenSetting()
     {
-        PopupController.Instance.ShowPopup(typeof(PopupSetting).ToString());
+        PopupController.Instance.ShowPopup(typeof(PopupSetting));
     }
 }

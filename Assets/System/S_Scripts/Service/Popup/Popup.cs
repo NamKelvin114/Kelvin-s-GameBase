@@ -16,9 +16,9 @@ public abstract class Popup : CacheGameComponent<Canvas>, IPopupRuntime
 
     private readonly int _offset = 200;
 
-    private Action _actionBeforeHide;
+    [NonSerialized] private Action _actionBeforeHide;
 
-    private Action _actionBeforeShow;
+    [NonSerialized] private Action _actionBeforeShow;
 
     private Vector3 PopupPos => GetRectTransform.localPosition;
     public bool IsShowing { get; set; }
@@ -41,6 +41,8 @@ public abstract class Popup : CacheGameComponent<Canvas>, IPopupRuntime
 
     public void Show(Action beforeShow = null)
     {
+        _actionBeforeHide = null;
+        _actionBeforeShow = null;
         if (!IsShowing)
         {
             CanvasPopup.overrideSorting = true;
@@ -78,14 +80,20 @@ public abstract class Popup : CacheGameComponent<Canvas>, IPopupRuntime
             ShowContent();
         }
     }
-
-
-    public void Hide(Action beforeHide = null)
+    public void Hide()
     {
-        if (!IsShowing)
+        HideHandle();
+    }
+
+    public void Hide(Action beforeHide)
+    {
+       HideHandle(beforeHide);
+    }
+    void HideHandle(Action beforeHide = null)
+    {
+         if (!IsShowing)
         {
             _actionBeforeHide += beforeHide;
-            BeforeHide();
             if (isUseAnimation)
                 switch (typeAnimation)
                 {
@@ -145,6 +153,7 @@ public abstract class Popup : CacheGameComponent<Canvas>, IPopupRuntime
                 Close();
         }
     }
+   
 
     private bool OptionMove()
     {
@@ -173,7 +182,7 @@ public abstract class Popup : CacheGameComponent<Canvas>, IPopupRuntime
     {
     }
 
-    protected void Close()
+    private void Close()
     {
         BeforeHide();
         gameObject.SetActive(false);
@@ -227,6 +236,7 @@ public abstract class Popup : CacheGameComponent<Canvas>, IPopupRuntime
         gameObject.name = GetType().Name;
     }
 }
+
 
 public enum TypeAnimation
 {
