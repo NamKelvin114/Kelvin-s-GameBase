@@ -1,5 +1,6 @@
 {
   "dependencies": {
+"com.wolf-package.object-pooling":"https://github.com/wolf-package/object-pooling-unity.git#1.0.0",
     "com.dbrizov.naughtyattributes": "https://github.com/dbrizov/NaughtyAttributes.git#upm",
     "com.kyrylokuzyk.primetween": "file:../Assets/Plugins/PrimeTween/internal/com.kyrylokuzyk.primetween.tgz",
     "com.unity.addressables": "1.21.21",
