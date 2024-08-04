@@ -8,7 +8,7 @@ using UnityEngine;
 public class SoundEmitter : CacheGameComponent<AudioSource>
 {
     private Coroutine emitterRoutine;
-    public string KeyPool { private get; set; }
+    public string KeyPool {  private get; set; }
 
     protected override void Reset()
     {
@@ -33,13 +33,68 @@ public class SoundEmitter : CacheGameComponent<AudioSource>
     }
 
 
-    public void PlaySoundFx(AudioClip audioClip, bool loop, float volume, Action actionWhenEndClip)
+    public void PlaySoundFx(SoundFXData audioData, Action actionWhenEndClip, out AudioClip currentSoundFxPlaying)
     {
-        Play(audioClip, loop, volume);
+        AudioClip getSoundFX = null;
+        currentSoundFxPlaying = null;
+        switch (audioData.playMode)
+        {
+            case PlaySoundFXMode.Sequence:
+                var index = -1;
+                HandleSequence();
+                void HandleSequence()
+                {
+                    index++;
+                    getSoundFX = audioData.audioClips[index];
+                    if (index>=audioData.audioClips.Count-1)
+                    {
+                        Play(getSoundFX, false, audioData.audioVolume, (() =>
+                        {
+                            actionWhenEndClip?.Invoke();
+                        })); 
+                    }
+                    else
+                    {
+                        Play(getSoundFX, false, audioData.audioVolume, (() =>
+                        {
+                            HandleSequence();
+                        })); 
+                    }
+                }
+                break;
+            case PlaySoundFXMode.RandomContinuous:
+                HandleRandonContinuous();
+                void HandleRandonContinuous()
+                {
+                    getSoundFX= audioData.audioClips[UnityEngine.Random.Range(0, audioData.audioClips.Count)];
+                    Play(getSoundFX, false, audioData.audioVolume, (() =>
+                    {
+                        HandleRandonContinuous();
+                    })); 
+                }
+                break;
+            case PlaySoundFXMode.RandomSingle:
+                getSoundFX= audioData.audioClips[UnityEngine.Random.Range(0, audioData.audioClips.Count)];
+                Play(getSoundFX, false, audioData.audioVolume, (() =>
+                {
+                    actionWhenEndClip?.Invoke();
+                })); 
+                break;
+        }
+        currentSoundFxPlaying = getSoundFX;
     }
 
-    public void PlayMusic(AudioClip audioClip, float volume)
+    public void PlayMusic(MusicData audioData, out AudioClip currentMusicPlaying)
     {
-        Play(audioClip, true, volume);
+        AudioClip getMusic = null;
+        currentMusicPlaying = null;
+        switch (audioData.playMode)
+        {
+            case PlayMusicMode.RandomSingle:
+                getMusic = audioData.audioClips[UnityEngine.Random.Range(0, audioData.audioClips.Count)];
+                currentMusicPlaying = getMusic;
+                break;
+        }
+        Play(getMusic, true, audioData.audioVolume);
     }
 }

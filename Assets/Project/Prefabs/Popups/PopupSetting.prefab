@@ -1283,7 +1283,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
-  isPlaySound: 0
+  isPlayAudio: 0
+  audioUIType: 0
+  musicData: {fileID: 0}
+  soundData: {fileID: 0}
   isVibrate: 0
   sizePressed: 0.9
   timeToHold: 1

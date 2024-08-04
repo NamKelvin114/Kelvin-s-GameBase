@@ -24,21 +24,20 @@ public class AudioController : Singleton<AudioController>
 
     public void PlayMusic(MusicData audioData)
     {
-        AudioClip getMusic;
-        switch (audioData.playMode)
-        {
-            case PlayMusicMode.RandomSingle:
-                getMusic = audioData.audioClips[Random.Range(0, audioData.audioClips.Count)];
-                _currentMusicPlaying = getMusic;
-                var spawnEmittor =
-                    PoolingObject.Instance.Spawn(_poolKey, soundEmitter.gameObject, audioContainer, null);
-                var musicEmiitor = spawnEmittor.GetComponent<SoundEmitter>();
-                musicEmiitor.PlayMusic(_currentMusicPlaying, audioData.audioVolume);
-                break;
-        }
+        var spawnEmittor =
+            PoolingObject.Instance.Spawn(_poolKey, soundEmitter.gameObject, audioContainer, null);
+        var musicEmiitor = spawnEmittor.GetComponent<SoundEmitter>();
+        musicEmiitor.PlayMusic(audioData, out AudioClip getCurrentMusicPlaying);
+        _currentMusicPlaying = getCurrentMusicPlaying;
     }
 
-    public void PlaySoundFx(SoundFXData audioData, bool loop, float volume, Action actionWhenEndClip)
+    public void PlaySoundFx(SoundFXData audioData, Action actionWhenEndClip)
     {
+        var spawnEmittor =
+            PoolingObject.Instance.Spawn(_poolKey, soundEmitter.gameObject, audioContainer, null);
+        var soundFXEmiitor = spawnEmittor.GetComponent<SoundEmitter>();
+        soundFXEmiitor.KeyPool = _poolKey;
+        soundFXEmiitor.PlaySoundFx(audioData, actionWhenEndClip, out AudioClip currentSoundFxPlaying);
+        _currentSoundFxPlaying = currentSoundFxPlaying;
     }
 }

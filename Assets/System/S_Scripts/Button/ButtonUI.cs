@@ -1,7 +1,9 @@
 using System.Collections;
+using NaughtyAttributes;
 using PrimeTween;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Kelvin.ButtonUI
@@ -11,7 +13,13 @@ namespace Kelvin.ButtonUI
         /// <summary>
         ///     Custom Properties
         /// </summary>
-        [SerializeField] private bool isPlaySound;
+        [SerializeField] private bool isPlayAudio;
+
+        [SerializeField] private AudioUIType audioUIType;
+
+        [SerializeField] private MusicData musicData; 
+        
+        [SerializeField] private SoundFXData soundData;
 
         [SerializeField] private bool isVibrate;
 
@@ -77,9 +85,17 @@ namespace Kelvin.ButtonUI
                 //PLay Vibrate
             }
 
-            if (isPlaySound)
+            if (isPlayAudio)
             {
-                //PLay Sound
+                switch (audioUIType)
+                {
+                    case AudioUIType.Music:
+                        AudioController.Instance.PlayMusic(musicData);
+                        break;
+                    case AudioUIType.SoundFX:
+                        AudioController.Instance.PlaySoundFx(soundData,null);
+                        break;
+                }
             }
         }
 
@@ -97,5 +113,10 @@ namespace Kelvin.ButtonUI
             OnBUttonUp?.Invoke();
             StopCoroutine(holdCoroutine);
         }
+    }
+    public enum AudioUIType
+    {
+        SoundFX,
+        Music
     }
 }
