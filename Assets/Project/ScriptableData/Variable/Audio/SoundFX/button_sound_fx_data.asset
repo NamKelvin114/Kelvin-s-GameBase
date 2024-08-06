@@ -15,4 +15,6 @@ MonoBehaviour:
   audioVolume: 1
   audioClips:
   - {fileID: 8300000, guid: 52104bc3637e70540be457e0ba1ba9cd, type: 3}
-  playMode: 1
+  - {fileID: 8300000, guid: 80d3799791748ac42b3ec097c17a2383, type: 3}
+  - {fileID: 8300000, guid: 4a09040e8e6916c4aae24278581e6b06, type: 3}
+  playMode: 0

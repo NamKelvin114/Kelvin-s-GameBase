@@ -57,7 +57,6 @@ namespace Kelvin.Pool
 
         public void DeSpawn(string keyPool, GameObject obj, bool isDestroy = false, Action actionDeSpawn = null)
         {
-    
             var getObj = activePool[keyPool].Where(o => o == obj).FirstOrDefault();
             activePool[keyPool].Remove(getObj);
             if (isDestroy)
@@ -82,11 +81,10 @@ namespace Kelvin.Pool
         public GameObject Spawn(string keyPool, GameObject obj, Transform parent, Action actionSpawn)
         {
             GameObject spawnObj = null;
-            bool existPool = waitPool.ContainsKey(keyPool);
+            var existPool = waitPool.ContainsKey(keyPool);
             if (existPool)
             {
-                bool hasObj = true;
-                if (hasObj)
+                if (waitPool[keyPool].Count != 0)
                 {
                     var dequeue = waitPool[keyPool].Dequeue();
                     dequeue.SetActive(true);
@@ -96,13 +94,14 @@ namespace Kelvin.Pool
                 }
                 else
                 {
-                    Debug.LogError($"Can not found Obj in {keyPool}"+"key pool");
+                    spawnObj = SpawnNew(keyPool, obj, parent, true, actionSpawn);
                 }
             }
             else
             {
                 spawnObj = SpawnNew(keyPool, obj, parent, true, actionSpawn);
             }
+
             return spawnObj;
         }
     }
