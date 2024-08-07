@@ -35,7 +35,7 @@ namespace Kelvin.Editor
         private static void OpenGameplayScene()
         {
             if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
-                EditorSceneManager.OpenScene("Assets/System/S_Scenes/Service.unity");
+                EditorSceneManager.OpenScene("Assets/System/S_Scenes/Gameplay.unity");
         }
     }
 }

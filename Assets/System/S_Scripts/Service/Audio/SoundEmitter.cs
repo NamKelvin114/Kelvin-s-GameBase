@@ -67,7 +67,7 @@ public class SoundEmitter : CacheGameComponent<AudioSource>
                 void HandleRandonContinuous()
                 {
                     getSoundFX = audioData.audioClips[Random.Range(0, audioData.audioClips.Count)];
-                    Play(getSoundFX, false, audioData.audioVolume, () => { HandleRandonContinuous(); });
+                    Play(getSoundFX, false, audioData.audioVolume, () => { HandleRandonContinuous(); }, false);
                 }
 
                 break;
