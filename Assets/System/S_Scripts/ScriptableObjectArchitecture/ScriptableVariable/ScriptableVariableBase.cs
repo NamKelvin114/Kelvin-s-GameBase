@@ -13,7 +13,7 @@ namespace ScriptableObjectArchitecture
     {
         [ReadOnly] [SerializeField] protected string iD;
 
-        [SerializeField] protected T initValue;
+        public T initValue;
 
         [SerializeField] protected bool save;
 
