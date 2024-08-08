@@ -24,6 +24,7 @@ public class LevelManager : ScriptableObject
         gameState.Value = GameState.LoadingLevel;
         var loadAsset = await Addressables.LoadAssetAsync<GameObject>(levels[currentLevelIndex.Value-1].GameObject().name);
         currentLevel.Value = loadAsset.GetComponent<Level>();
+        currentLevel.Value.levelManager = this;
         if (_currentLevelContainer.childCount != 0) _currentLevelContainer.RemoveAllChildren();
         Instantiate(currentLevel.Value, _currentLevelContainer);
         gameState.Value = GameState.PLayingLevel;

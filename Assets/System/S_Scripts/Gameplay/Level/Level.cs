@@ -1,5 +1,6 @@
+using NaughtyAttributes;
 using UnityEngine;
 public class Level : MonoBehaviour
 {
-    public LevelManager levelManager;
+    [ReadOnly] public LevelManager levelManager;
 }
