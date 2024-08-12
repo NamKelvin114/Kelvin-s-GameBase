@@ -32,8 +32,10 @@ namespace Kelvin
         private static void SupportSaveDataInEditor()
         {
             EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
+            
         }
-
+        
+        
         private static void OnPlayModeStateChanged(PlayModeStateChange state)
         {
             if (state == PlayModeStateChange.ExitingPlayMode) Data.SaveAll();

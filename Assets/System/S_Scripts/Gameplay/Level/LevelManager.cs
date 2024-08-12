@@ -6,15 +6,15 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AddressableAssets;using Random = UnityEngine.Random;
 
-[CreateAssetMenu(menuName = "Data/Level", fileName = "levelmanager")]
+[CreateAssetMenu(menuName = "Data/LevelManager", fileName = "levelmanager")]
 public class LevelManager : ScriptableObject
 {
     [Header("Levels")] [SerializeField] private List<Level> levels;
     [SerializeField] private ScriptableLevelVariable currentLevel;
+    [SerializeField] private LoadLevelMode loadLevelMode;
 
     [Header("Properties")] [SerializeField]
     private ScriptableIntVariable currentLevelIndex;
-    [SerializeField] private LoadLevelMode loadLevelMode;
     [SerializeField] private ScriptableGameStateVariable gameState;
     private Transform _currentLevelContainer;
     
@@ -37,10 +37,17 @@ public class LevelManager : ScriptableObject
         Data.SaveAll();
         LoadCurrentLevel(_currentLevelContainer);
     }
+    public void BackLevel()
+    {
+        currentLevelIndex.Value--;
+        CheckLevel();
+        Data.SaveAll();
+        LoadCurrentLevel(_currentLevelContainer);
+    }
 
     void CheckLevel()
     {
-        if (currentLevelIndex.Value>=levels.Count)
+        if (currentLevelIndex.Value>levels.Count || currentLevelIndex.Value <=0)
         {
             switch (loadLevelMode)
             {

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb0c18bdf6b2755448ec2f94e2b78dd3, type: 3}
   m_Name: music_menu_data
   m_EditorClassIdentifier: 
-  audioVolume: 1
+  audioVolume: {fileID: 11400000, guid: 407f1ea7b335f5c45a162022c4f18985, type: 2}
   audioClips:
   - {fileID: 8300000, guid: f39a443dc93c294428b19549f64d0c1c, type: 3}
   playMode: 0

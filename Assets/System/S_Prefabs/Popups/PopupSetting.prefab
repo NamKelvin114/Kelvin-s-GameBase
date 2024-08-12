@@ -590,6 +590,10 @@ MonoBehaviour:
   typeAnimation: 0
   typeAnimMove: 0
   buttonUI: {fileID: 3893192172042275091}
+  musicVolume: {fileID: 11400000, guid: 407f1ea7b335f5c45a162022c4f18985, type: 2}
+  soundFXVolume: {fileID: 11400000, guid: 9a32a08a661df9242b8c948b7ca726fc, type: 2}
+  musicSlider: {fileID: 8395019421499975305}
+  soundFXSlider: {fileID: 4699258976870904820}
 --- !u!223 &6771212484066753948
 Canvas:
   m_ObjectHideFlags: 0
@@ -830,7 +834,19 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1082554873710196512}
+        m_TargetAssemblyTypeName: PopupSetting, Assembly-CSharp
+        m_MethodName: MusicVolumeChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4759608668776596487
 GameObject:
   m_ObjectHideFlags: 0
@@ -1470,7 +1486,19 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1082554873710196512}
+        m_TargetAssemblyTypeName: PopupSetting, Assembly-CSharp
+        m_MethodName: SoundFXVolumeChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8171859641966931487
 GameObject:
   m_ObjectHideFlags: 0

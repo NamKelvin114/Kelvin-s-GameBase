@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 122eba60fe053e349a6ee825189988b1, type: 3}
   m_Name: button_sound_fx_data
   m_EditorClassIdentifier: 
-  audioVolume: 1
+  audioVolume: {fileID: 11400000, guid: 9a32a08a661df9242b8c948b7ca726fc, type: 2}
   audioClips:
   - {fileID: 8300000, guid: 52104bc3637e70540be457e0ba1ba9cd, type: 3}
   playMode: 1

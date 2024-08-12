@@ -2,23 +2,40 @@ using System;
 using System.Collections;
 using Kelvin;
 using Kelvin.Pool;
+using Unity.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(AudioSource))]
 public class SoundEmitter : CacheGameComponent<AudioSource>
 {
-    private Coroutine emitterRoutine;
+    [Header("Volume")]
+    [ReadOnly] public ScriptableFloatVariable volume;
     public string KeyPool { private get; set; }
-
+    private Coroutine _emitterRoutine;
     protected override void Reset()
     {
         base.Reset();
     }
+    public void Init(string keyPool, ScriptableFloatVariable getVolume)
+    {
+        KeyPool = keyPool;
+        volume = getVolume;
+        volume.OnRaise += VolumeChange;
+    }
+    void VolumeChange(float value)
+    {
+        component.volume = value;
+    }
 
     private void OnDisable()
     {
-        if (emitterRoutine != null) StopCoroutine(emitterRoutine);
+        if (_emitterRoutine != null) StopCoroutine(_emitterRoutine);
+        if (volume!=null)
+        {
+            volume.OnRaise -= VolumeChange;
+        }
     }
 
     private void Play(AudioClip audioClip, bool loop, float volume, Action actionWhenEndClip = null,
@@ -29,7 +46,7 @@ public class SoundEmitter : CacheGameComponent<AudioSource>
         component.clip = audioClip;
         component.Play();
         if (!loop)
-            emitterRoutine = StartCoroutine(WaitForEndClip(audioClip.length, actionWhenEndClip, isDeSpawnWhenDone));
+            _emitterRoutine = StartCoroutine(WaitForEndClip(audioClip.length, actionWhenEndClip, isDeSpawnWhenDone));
     }
 
     private IEnumerator WaitForEndClip(float lengthClip, Action actionEndClip, bool isDeSpawn = true)
@@ -37,6 +54,10 @@ public class SoundEmitter : CacheGameComponent<AudioSource>
         yield return new WaitForSeconds(lengthClip);
         actionEndClip?.Invoke();
         if (isDeSpawn) PoolingObject.Instance.DeSpawn(KeyPool, gameObject);
+    }
+    public void StopPLay()
+    {
+        component.Stop();
     }
 
 
@@ -55,9 +76,9 @@ public class SoundEmitter : CacheGameComponent<AudioSource>
                     index++;
                     getSoundFX = audioData.audioClips[index];
                     if (index >= audioData.audioClips.Count - 1)
-                        Play(getSoundFX, false, audioData.audioVolume, () => { actionWhenEndClip?.Invoke(); });
+                        Play(getSoundFX, false, audioData.audioVolume.Value, () => { actionWhenEndClip?.Invoke(); });
                     else
-                        Play(getSoundFX, false, audioData.audioVolume, () => { HandleSequence(); }, false);
+                        Play(getSoundFX, false, audioData.audioVolume.Value, () => { HandleSequence(); }, false);
                 }
 
                 break;
@@ -67,13 +88,13 @@ public class SoundEmitter : CacheGameComponent<AudioSource>
                 void HandleRandonContinuous()
                 {
                     getSoundFX = audioData.audioClips[Random.Range(0, audioData.audioClips.Count)];
-                    Play(getSoundFX, false, audioData.audioVolume, () => { HandleRandonContinuous(); }, false);
+                    Play(getSoundFX, false, audioData.audioVolume.Value, () => { HandleRandonContinuous(); }, false);
                 }
 
                 break;
             case PlaySoundFXMode.RandomSingle:
                 getSoundFX = audioData.audioClips[Random.Range(0, audioData.audioClips.Count)];
-                Play(getSoundFX, false, audioData.audioVolume, () => { actionWhenEndClip?.Invoke(); });
+                Play(getSoundFX, false, audioData.audioVolume.Value, () => { actionWhenEndClip?.Invoke(); });
                 break;
         }
 
@@ -92,6 +113,6 @@ public class SoundEmitter : CacheGameComponent<AudioSource>
                 break;
         }
 
-        Play(getMusic, true, audioData.audioVolume);
+        Play(getMusic, true, audioData.audioVolume.Value);
     }
 }

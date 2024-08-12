@@ -3,7 +3,7 @@ using UnityEngine;
 
 public abstract class AudioData : ScriptableObject
 {
-    [Range(0, 1)] public float audioVolume;
+    public ScriptableFloatVariable audioVolume;
     public List<AudioClip> audioClips;
 }
 

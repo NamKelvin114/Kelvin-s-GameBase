@@ -5,9 +5,14 @@ using UnityEngine;
 
 public class AudioController : Singleton<AudioController>
 {
+    [Header("Properties")]
     [SerializeField] private Transform audioContainer;
     [SerializeField] private SoundEmitter soundEmitter;
     [SerializeField] private ScriptableBoolVariable isLoadingCompleted;
+    [Header("Volume")]
+    [SerializeField]
+    private ScriptableFloatVariable musicVolume;
+    [SerializeField] private ScriptableFloatVariable soundFXVolume;
     private AudioClip _currentMusicPlaying;
     private AudioClip _currentSoundFxPlaying;
     private SoundEmitter _musicEmittor;
@@ -29,8 +34,15 @@ public class AudioController : Singleton<AudioController>
             PoolingObject.Instance.Spawn(_poolKey, soundEmitter.gameObject, audioContainer, null);
         var musicEmiitor = spawnEmittor.GetComponent<SoundEmitter>();
         _musicEmittor = musicEmiitor;
+        _musicEmittor.Init(_poolKey,musicVolume);
         musicEmiitor.PlayMusic(audioData, out var getCurrentMusicPlaying);
         _currentMusicPlaying = getCurrentMusicPlaying;
+    }
+    public void StopMusic()
+    {
+        _musicEmittor.StopPLay();
+        PoolingObject.Instance.DeSpawn(_poolKey, _musicEmittor.gameObject);
+        _musicEmittor = null;
     }
 
     public void PlaySoundFx(SoundFXData audioData, Action actionWhenEndClip)
@@ -38,7 +50,7 @@ public class AudioController : Singleton<AudioController>
         var spawnEmittor =
             PoolingObject.Instance.Spawn(_poolKey, soundEmitter.gameObject, audioContainer, null);
         var soundFXEmiitor = spawnEmittor.GetComponent<SoundEmitter>();
-        soundFXEmiitor.KeyPool = _poolKey;
+        soundFXEmiitor.Init(_poolKey,soundFXVolume);
         soundFXEmiitor.PlaySoundFx(audioData, actionWhenEndClip, out var currentSoundFxPlaying);
         _currentSoundFxPlaying = currentSoundFxPlaying;
     }

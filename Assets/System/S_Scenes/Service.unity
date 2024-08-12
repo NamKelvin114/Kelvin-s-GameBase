@@ -627,6 +627,8 @@ MonoBehaviour:
   audioContainer: {fileID: 680707629}
   soundEmitter: {fileID: 5588125115311304260, guid: 0aaf41897d3ade944b08817128fd56dc, type: 3}
   isLoadingCompleted: {fileID: 11400000, guid: 66a6fa0605df82d478f64736d6bc23bd, type: 2}
+  musicVolume: {fileID: 11400000, guid: 407f1ea7b335f5c45a162022c4f18985, type: 2}
+  soundFXVolume: {fileID: 11400000, guid: 9a32a08a661df9242b8c948b7ca726fc, type: 2}
 --- !u!1 &1309161684
 GameObject:
   m_ObjectHideFlags: 0

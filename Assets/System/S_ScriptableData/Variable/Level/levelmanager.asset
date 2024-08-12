@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 336559d512961ad4986b9466f96e34aa, type: 3}
+  m_Name: levelmanager
+  m_EditorClassIdentifier: 
+  levels:
+  - {fileID: 3825993377809911884, guid: 3ed29a96e1d23064bb2287c93c260d54, type: 3}
+  - {fileID: 3825993377809911884, guid: 253e0aed6c7c3ca4c9a836b459daf2b1, type: 3}
+  currentLevel: {fileID: 11400000, guid: cab13cf6b2306384cb02bc6fa29894dc, type: 2}
+  currentLevelIndex: {fileID: 11400000, guid: d0e2a87b583d30041ba5336595a2097d, type: 2}
+  loadLevelMode: 0
+  gameState: {fileID: 11400000, guid: f155ea3f3fff02146a1512ac8495d5da, type: 2}
