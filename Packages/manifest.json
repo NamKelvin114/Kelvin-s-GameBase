@@ -1,6 +1,5 @@
 {
   "dependencies": {
-"com.wolf-package.object-pooling":"https://github.com/wolf-package/object-pooling-unity.git#1.0.0",
     "com.dbrizov.naughtyattributes": "https://github.com/dbrizov/NaughtyAttributes.git#upm",
     "com.kyrylokuzyk.primetween": "file:../Assets/Plugins/PrimeTween/internal/com.kyrylokuzyk.primetween.tgz",
     "com.unity.addressables": "1.21.21",
@@ -8,6 +7,7 @@
     "com.unity.device-simulator.devices": "1.0.0",
     "com.unity.feature.2d": "2.0.1",
     "com.unity.feature.development": "1.0.1",
+    "com.unity.mobile.android-logcat": "1.4.2",
     "com.unity.mobile.notifications": "2.3.2",
     "com.unity.nuget.newtonsoft-json": "3.2.1",
     "com.unity.serialization": "3.1.1",
@@ -16,6 +16,7 @@
     "com.unity.timeline": "1.7.6",
     "com.unity.ugui": "1.0.0",
     "com.unity.visualscripting": "1.9.4",
+    "com.wolf-package.object-pooling": "https://github.com/wolf-package/object-pooling-unity.git#1.0.0",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",

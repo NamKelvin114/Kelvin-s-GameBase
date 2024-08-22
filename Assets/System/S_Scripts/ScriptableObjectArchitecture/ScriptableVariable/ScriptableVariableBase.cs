@@ -2,7 +2,6 @@ using System;
 using Kelvin;
 using Kelvin.MasterData;
 using NaughtyAttributes;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -52,17 +51,12 @@ namespace ScriptableObjectArchitecture
 
         private void OnEnable()
         {
-#if UNITY_EDITOR
-            EditorApplication.playModeStateChanged += OnPlayModeChange;
-#endif
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
         private void OnDisable()
         {
-#if UNITY_EDITOR
-            EditorApplication.playModeStateChanged -= OnPlayModeChange;
-#endif
+            SceneManager.sceneLoaded -= OnSceneLoaded;
         }
 
         protected virtual void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -71,6 +65,9 @@ namespace ScriptableObjectArchitecture
                 (resetOn == ResetType.AdditiveSceneLoaded && mode == LoadSceneMode.Additive))
                 if (!save)
                     Value = initValue;
+
+            debugValue = Value;
+            _isShowDebugValue = true;
         }
 
         protected override void DoBeforeSerialize()
@@ -80,19 +77,6 @@ namespace ScriptableObjectArchitecture
         protected override void DoAfterDeserialize()
         {
             runtimeValue = initValue;
-        }
-
-        private void OnPlayModeChange(PlayModeStateChange playModeStateChange)
-        {
-            if (playModeStateChange == PlayModeStateChange.ExitingEditMode)
-            {
-                if (!save) debugValue = initValue;
-                _isShowDebugValue = true;
-            }
-            else if (playModeStateChange == PlayModeStateChange.EnteredEditMode)
-            {
-                _isShowDebugValue = false;
-            }
         }
     }
 }

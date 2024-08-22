@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Runtime.CompilerServices;
 using Kelvin.MasterData;
-using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -25,20 +24,7 @@ namespace Kelvin
         {
             App.globalComponent = globalComponent;
             Data.Init();
-            SupportSaveDataInEditor();
             SetAppFirstOpenTimestamp();
-        }
-
-        private static void SupportSaveDataInEditor()
-        {
-            EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
-            
-        }
-        
-        
-        private static void OnPlayModeStateChanged(PlayModeStateChange state)
-        {
-            if (state == PlayModeStateChange.ExitingPlayMode) Data.SaveAll();
         }
 
         /// <summary>

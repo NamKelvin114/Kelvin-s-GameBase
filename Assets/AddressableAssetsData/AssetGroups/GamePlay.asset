@@ -17,11 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 33b55e43a11dc9a498f2794db8d56c17
   m_SerializeEntries:
-  - m_GUID: 25990b4281db61546bb2661c9a1769d2
-    m_Address: Gameplay
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7471ddc9ae88eda438da8c8a004395ab
     m_Address: Assets/System/S_ScriptableData/Variable/Level/levelmanager.asset
     m_ReadOnly: 0

@@ -16,22 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 432f2329c556fd64687aae9e9461b55d
-  m_SerializeEntries:
-  - m_GUID: d7fa6a979acb2bc419ff7e0371e53153
-    m_Address: Assets/Project/Video/Gameplay/Level 2.mp4
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c72389f540049e44e8cfc9c730dbaca3
-    m_Address: Assets/Project/Video/Menu/goku whif the flying nimbus.mp4
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d811c9b13da20e948b7b1ab36e5f63cd
-    m_Address: Assets/Project/Video/Gameplay/Level 1_Vid.mp4
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 1f8f85f02a41b4d4cad647e97ab3e93e, type: 2}
   m_SchemaSet:

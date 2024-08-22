@@ -200,6 +200,7 @@ namespace Kelvin.MasterData
         public static void DeleteAll()
         {
             datas.Clear();
+            Debug.LogAssertion("Delete Data");
         }
 
         /// <summary>
